@@ -1,0 +1,14 @@
+Package: NarsFun
+Type: Package
+Title: Narcisse' useful functions
+Version: 0.1
+Date: 2022-07-08
+Author:  Narcisse Yehouenou <narcisstar211@gmail.com>
+Authors@R: c(person("Narcise", "Yehouenou", role = c("aut", "cre"),
+                     email = "narcisstar211@gmail.com"))
+Maintainer: Narcisse Yehouenou <narcisstar211@gmail.com>
+Description: This package is personal and include my Uilities. It contains useful functions for analysis and solves some forest estimations' preoccupations.
+License: GPL-2
+Imports: stats
+Encoding: UTF-8
+RoxygenNote: 7.1.2

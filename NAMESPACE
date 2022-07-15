@@ -1,0 +1,2 @@
+export("adequat", "deg", "fibonacci", "fiboRate", "height", "rad", "sqrtm",
+       "Vectoriz")
