@@ -1,2 +1,3 @@
 export("adequat", "deg", "fibonacci", "fiboRate", "height", "rad", "sqrtm",
-       "Vectoriz")
+       "Vectoriz", "angle2slope", "slope2angle", "angleMain")
+importFrom("stats", "df.residual", "pchisq", "residuals")

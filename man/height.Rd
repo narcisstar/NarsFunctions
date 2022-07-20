@@ -22,7 +22,7 @@ height(
 \item{angleUnit}{The unit of 'vh' and 'vb' measures when their are "angle". Either "deg", "rad". Defalt is "deg".}
 }
 \value{
-Returns a vector heights.
+Returns a vector of heights.
 }
 \description{
 Computes the height of tree or vertical object. Allows all both slope and angle measures. No matter the relative position of the persons who measures angle/slope.
@@ -32,7 +32,7 @@ height(10, 80, 17)
 height(17, vh = -18, vb = -113)
 height(distance = 18, vh = 42, vb = -12, type = "angle", angleUnit = "deg")
 height(distance = 18:21, vh = 42:45, vb = -12:-15, type = "angle", angleUnit = "deg")
-## Bellow shos warning messages 
+## Bellow shows warning messages 
 height(distance = 18:21, vh = -42:-45, vb = -12:-15, type = "angle", angleUnit = "deg")
 }
 \author{

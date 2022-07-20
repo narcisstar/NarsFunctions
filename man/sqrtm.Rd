@@ -10,7 +10,7 @@ sqrtm(x)
 \item{x}{A matrix or numeric value}
 }
 \value{
-Square root of x.
+Matrix square root of x.
 }
 \description{
 Computes Matrix and numeric number square root using eigen analysis.
@@ -23,4 +23,7 @@ ncol = 3); A
 a <- sqrtm(A); a
 a \%*\% a ## ==A; matrix square 
 a * a ## not equals A; simple square
+}
+\seealso{
+\code{\link{sqrt}}
 }

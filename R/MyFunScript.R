@@ -84,7 +84,7 @@ fiboRate <- function(n = 10, PrintSer = FALSE, Uo = 0, U1 = 1){
 #' Matrix and numeric square root
 #' @description Computes Matrix and numeric number square root using eigen analysis.
 #' @param x A matrix or numeric value 
-#' @return Square root of x.
+#' @return Matrix square root of x.
 #' @examples sqrtm(4) # returns numeric 
 #' sqrtm(matrix(64)) # returns matrix
 #' A <- matrix(data = c(1, 2, 3, 2, 20, 26, 3, 26, 70),
@@ -92,7 +92,7 @@ fiboRate <- function(n = 10, PrintSer = FALSE, Uo = 0, U1 = 1){
 #' a <- sqrtm(A); a
 #' a %*% a ## ==A; matrix square 
 #' a * a ## not equals A; simple square
-
+#' @seealso \code{\link{sqrt}}
 #' @export
 sqrtm <- function(x)
 {
@@ -112,7 +112,7 @@ sqrtm <- function(x)
 #' @param radian A vector of degree values to be converted
 #' @return Returns a vector of radian values.
 #' @examples deg(pi/2)  
-#' @seealso rad
+#' @seealso \code{\link{rad}}, the ‘complement’ of \code{deg}
 #' @export
 
 deg <- function (radian) 
@@ -125,13 +125,12 @@ deg <- function (radian)
 #' @param degree A vector of radian values to be converted
 #' @return Returns a vector of radian values.
 #' @examples rad(180)  
-#' @seealso deg
+#' @seealso \code{\link{deg}}, the the ‘complement’ of \code{rad}
 #' @export
 rad <- function (degree) 
 {
   degree * (pi/180)
 }
-
 
 #' Height of tree or vertical object.
 #' @description Computes the height of tree or vertical object. Allows all both slope and angle measures. No matter the relative position of the persons who measures angle/slope.
@@ -178,3 +177,63 @@ height <- function(distance, vh, vb, type = c("angle", "slope"),
   return(h)
 }
 
+
+#' Angle to slope
+#' @description Converts angle values to  slope values.
+#' @param angle numeric vector of angle to be converted to slope. 
+#' @param  angleUnit The unit of \code{angle}. Either "deg", "rad". Default is "deg".
+#' @return Returns a vector of slope values.
+#' @examples angle2slope(10)
+#' angle2slope(angle = 45)
+#' angle2slope(angle = 50, angleUnit = "deg")
+#' angle2slope(1.047198, "rad") 
+#' angle2slope(0.2617994, angleUnit = "rad") 
+#' @seealso \code{\link{slope2angle}}, the the ‘complement’ of \code{angle2slope}.
+#' @export
+angle2slope <- function(angle, angleUnit = c("deg", "rad")){
+  if (prod(angleUnit == c("deg", "rad")) || angleUnit == "deg") 
+    angle <- rad(angle)
+  
+  else if (!(angleUnit %in% c("deg", "rad"))) 
+    stop("angleUnit should be either  'deg' or 'rad'") 
+  slp <- 100 * tan(angle)
+  return(slp)
+}
+
+#' Slope to angle
+#' @description Converts slope values to angle values.
+#' @param slope numeric vector of slope to be converted to angle. 
+#' @param  angleUnit The desired unit for the returned angle \code{Value}. Either "deg", "rad". Default is "deg".
+#' @return A vector of angle values in specified unit.
+#' @examples slope2angle(100)
+#' slope2angle(17.6327)
+#' slope2angle(angle2slope(30))
+#' @seealso \code{\link{angle2slope}}, the the ‘complement’ of \code{slope2angle}
+#' @export
+slope2angle <- function(slope, angleUnit = c("deg", "rad")){
+  if (prod(angleUnit == c("deg", "rad")) || angleUnit == "deg") 
+    return(deg(atan(.01 * slope)))
+  
+  else if (!(angleUnit %in% c("deg", "rad"))) 
+    stop("angleUnit should be either  'deg' or 'rad'") 
+  
+  return(atan(.01 * slope))
+}
+
+#' Main angle
+#' @description \code{angleMain} returns the main angle of an angle value. Main angles range from -pi to pi for radian unit while they range from -180 to 180 for degree unit 
+#' @param angle numeric vector of angle. 
+#' @param  angleUnit The unit of \code{angle}. Either "deg", "rad". Default is "deg".
+#' @return A matrix of main angle values in radian and in degree units.
+#' @export 
+#' @seealso \code{\link{rad}}, \code{\link{deg}}, \code{\link{slope2angle}}, \code{\link{angle2slope}}
+angleMain <- function(angle, angleUnit = c("deg", "rad")){
+  if (prod(angleUnit == c("deg", "rad")) || angleUnit == "deg") 
+    angle <- rad(angle)
+  
+  else if (!(angleUnit %in% c("deg", "rad"))) 
+    stop("angleUnit should be either  'deg' or 'rad'")
+  radian <- Arg(complex(real = cos(angle), imaginary = sin(angle)))
+  degree <- deg(radian)
+  return(cbind(radian, degree))
+}

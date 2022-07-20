@@ -19,5 +19,5 @@ Converts angle values from  radian to degree.
 deg(pi/2)  
 }
 \seealso{
-rad
+\code{\link{rad}}, the ‘complement’ of \code{deg}
 }

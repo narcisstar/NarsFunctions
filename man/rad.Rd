@@ -19,5 +19,5 @@ Converts angle values from  degree to radian.
 rad(180)  
 }
 \seealso{
-deg
+\code{\link{deg}}, the the ‘complement’ of \code{rad}
 }
