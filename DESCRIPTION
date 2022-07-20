@@ -1,7 +1,7 @@
 Package: NarsFun
 Type: Package
 Title: Narcisse' useful functions (In progress)
-Version: 0.1
+Version: 0.2
 Date: 2022-07-08
 Author:  Narcisse Yehouenou <narcisstar211@gmail.com>
 Authors@R: c(person("Narcise", "Yehouenou", role = c("aut", "cre"),
